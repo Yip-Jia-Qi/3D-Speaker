@@ -24,6 +24,7 @@ parser.add_argument('--seed', default=1234, type=int, help='Random seed for trai
 parser.add_argument('--gpu', nargs='+', help='GPU id to use.')
 
 def main():
+    print("starting training")
     args, overrides = parser.parse_known_args(sys.argv[1:])
     config = build_config(args.config, overrides, True)
 
@@ -38,7 +39,7 @@ def main():
     os.makedirs(config.exp_dir, exist_ok=True)
     logger = get_logger('%s/train.log' % config.exp_dir)
     logger.info(f"Use GPU: {gpu} for training.")
-
+    print(config.exp_dir)
     # dataset
     train_dataset = build('dataset', config)
     # dataloader
@@ -46,7 +47,8 @@ def main():
     config.dataloader['args']['sampler'] = train_sampler
     config.dataloader['args']['batch_size'] = int(config.batch_size / world_size)
     train_dataloader = build('dataloader', config)
-
+    
+    print("dataset done")
     # model
     embedding_model = build('embedding_model', config)
     if hasattr(config, 'speed_pertub') and config.speed_pertub:

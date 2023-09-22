@@ -35,7 +35,7 @@ class CosineClassifier(nn.Module):
         # x: [B, dim]
         for layer in self.blocks:
             x = layer(x)
-
+        
         # normalized
         x = F.linear(F.normalize(x), F.normalize(self.weight))
         return x

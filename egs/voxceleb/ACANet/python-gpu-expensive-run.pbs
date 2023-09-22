@@ -1,0 +1,40 @@
+## Set job parameters
+
+## Job Name
+#PBS -N 3dspkvoxceleb
+
+## Project Funding Code E,g. eee_userid
+#PBS -P gs_scse_aseschng
+
+## Queue  Name
+#PBS -q gpu8
+
+## Send email to yourself. Replace the email to your own email.
+#PBS -m ea
+#PBS -M jiaqi006@e.ntu.edu.sg
+
+## Specify walltime in HH:MM:SS
+#PBS -l walltime=120:00:00
+
+## Select 1 hosts (nodes)
+#PBS -l select=1:ncpus=4:mem=64gb:ngpus=1
+
+#PBS -S /bin/bash
+
+## cd $PBS_O_WORKDIR/..
+
+## Load the Application
+## source /home/jiaqi006/py-int/bin/activate
+
+## echo "The input file is: $Input"
+
+## export PATH=$HOME/miniconda3/bin:$PATH
+
+cd /home/jiaqi006/code/3D-Speaker/egs/voxceleb/ACANet
+
+source activate 3dspeaker
+
+bash run.sh
+
+echo "Done"
+

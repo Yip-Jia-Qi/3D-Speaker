@@ -1,0 +1,15 @@
+Done
+      ======================================================================================
+      Resource Usage on 2023-09-22 15:10:16.749655:
+      JobId: 1779068.hpc-mn1  				 Project: gs_scse_aseschng 
+      Submission Host: hpc-gekko1 
+      Exit Status: 0
+      NCPUs Requested: 4 				 NCPUs Used: 4
+      Memory Requested: 64gb 				 Memory Used: 23328kb 
+      Vmem Used: 23328kb
+      CPU Time Used: 00:00:01 
+      Walltime requested: 120:00:00 			 Walltime Used: 00:00:01
+      Submit Time:  Fri Sep 22 15:10:04 2023 		 Start Time: Fri Sep 22 15:10:04 2023 
+      End Time: Fri Sep 22 15:10:16 2023 
+      Execution Nodes Used: (hpc-g8003:ncpus=4:mem=67108864kb:ngpus=1)
+      ======================================================================================

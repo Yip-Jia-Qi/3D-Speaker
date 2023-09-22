@@ -1,7 +1,7 @@
 import torch
 import torch.nn as nn
 import math
-from TDNN import TDNNBlock, BatchNorm1d
+from .TDNN import TDNNBlock, BatchNorm1d
 
 # This code is partially adapted from
 # https://medium.com/@curttigges/the-annotated-perceiver-74752113eefb
@@ -221,12 +221,11 @@ class ACANet(nn.Module):
         x = x.permute(0,2,1)
         x = self.ch_expansion(x) #perform channel expansion before anything else
         
-        
         # First we expand our latent query matrix to size of batch
         batch_size = x.shape[0]
         input_length = x.shape[2]
         latent = self.latent.expand(-1, batch_size, -1)
-
+        
         # Next, we pass the image through the embedding module to get flattened input
         x = self.embed(x)
         
@@ -251,7 +250,7 @@ class ACANet(nn.Module):
             latent = latent.permute(1,2,0) #does not matter as long as batch is put back into the first dimension
             latent = latent.flatten(1,2)
         out = self.ch_compression(latent)
-        out = self.final_norm(out.squeeze()).unsqueeze(1)
+        out = self.final_norm(out.squeeze())
         # Finally, we project the output to the number of target classes
 
 

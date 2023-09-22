@@ -1,0 +1,17 @@
+Stage3: Training the speaker model...
+starting training
+Done
+      ======================================================================================
+      Resource Usage on 2023-09-22 15:41:15.959467:
+      JobId: 1779093.hpc-mn1  				 Project: gs_scse_aseschng 
+      Submission Host: hpc-gekko1 
+      Exit Status: 0
+      NCPUs Requested: 4 				 NCPUs Used: 4
+      Memory Requested: 64gb 				 Memory Used: 248252kb 
+      Vmem Used: 248252kb
+      CPU Time Used: 00:00:04 
+      Walltime requested: 120:00:00 			 Walltime Used: 00:00:08
+      Submit Time:  Fri Sep 22 15:40:57 2023 		 Start Time: Fri Sep 22 15:40:57 2023 
+      End Time: Fri Sep 22 15:41:15 2023 
+      Execution Nodes Used: (hpc-g8003:ncpus=4:mem=67108864kb:ngpus=1)
+      ======================================================================================
