@@ -9,20 +9,20 @@ reverb:
 exp_dir:
 
 # basic
-num_epoch: 60
-save_epoch_freq: 5
+num_epoch: 80
+save_epoch_freq: 10
 log_batch_freq: 100
 
 wav_len: 3.0 # duration(s) for each training sample.
 sample_rate: 16000
-aug_prob: 0.2
-speed_pertub: False
-lr: 0.001
-min_lr: !!float 0.00000001
+aug_prob: 0.2 #0
+speed_pertub: True #False
+lr: 0.1 #0.001
+min_lr: !!float 1e-4 #0.00000001
 
 # dataloader
 batch_size: 256
-num_workers: 4
+num_workers: 8
 
 # model
 fbank_dim: 80
@@ -95,20 +95,35 @@ embedding_model:
     dropout: 0.2
     trnfr_layers: 3
     n_blocks: 1
-    max_len: 20000
+    max_len: 60000
     final_layer: '1dE'
 
+# classifier:
+#   obj: speakerlab.models.campplus.classifier.LinearClassifier
+#   args:
+#     input_dim: <embedding_size>
+#     out_neurons: <num_classes>
+
+# optimizer:
+#   obj: torch.optim.Adam
+#   args:
+#     lr: <lr>
+#     weight_decay: 0.000002
+
 classifier:
-  obj: speakerlab.models.campplus.classifier.LinearClassifier
+  obj: speakerlab.models.campplus.classifier.CosineClassifier
   args:
     input_dim: <embedding_size>
     out_neurons: <num_classes>
 
 optimizer:
-  obj: torch.optim.Adam
+  obj: torch.optim.SGD
   args:
+    params:
     lr: <lr>
-    weight_decay: 0.000002
+    momentum: 0.9
+    nesterov: True
+    weight_decay: 0.0001
 
 lr_scheduler:
   obj: speakerlab.process.scheduler.WarmupCosineScheduler

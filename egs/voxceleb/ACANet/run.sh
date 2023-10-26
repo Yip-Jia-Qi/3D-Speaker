@@ -10,8 +10,8 @@ stop_stage=5
 
 data=/scratch/jiaqi006/voxceleb
 exp=exp
-exp_name=ACANet
-gpus="0"
+exp_name=ACANet_2gpu_80ep
+gpus="0 1"
 
 . utils/parse_options.sh || exit 1
 

@@ -250,7 +250,8 @@ class ACANet(nn.Module):
             latent = latent.permute(1,2,0) #does not matter as long as batch is put back into the first dimension
             latent = latent.flatten(1,2)
         out = self.ch_compression(latent)
-        out = self.final_norm(out.squeeze())
+        out = self.final_norm(out.squeeze(1))
+
         # Finally, we project the output to the number of target classes
 
 
